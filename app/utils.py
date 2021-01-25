@@ -5,6 +5,9 @@ import requests
 
 
 def random_string_generator(size=5, chars=string.ascii_lowercase + string.ascii_uppercase):
+    """
+    Function to create a random string, used for
+    """
     return "".join(random.choice(chars) for _ in range(size))
 
 
