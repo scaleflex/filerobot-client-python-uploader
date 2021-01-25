@@ -1,0 +1,63 @@
+version: "3.0"
+
+services:
+  postgres:
+    image: postgres:12-alpine
+    ports:
+      - "5432"
+    environment:
+      - POSTGRES_USER=filerobot
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./app/persist/database:/var/lib/postgresql
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=simeon@scaleflex.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379"
+    entrypoint: redis-server --appendonly yes
+    restart: always
+
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/app
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+
+  worker_system:
+    build: .
+    depends_on:
+      - app
+    volumes:
+      - ./app:/app
+    env_file:
+      - .env
+    command: "celery -A app.tasks.celery_worker worker -l info -Q system-queue --concurrency=${WORKERS_CONCURRENCY_UPLOAD}"
+
+  worker_upload:
+    build: .
+    depends_on:
+      - app
+    volumes:
+      - ./app:/app
+    env_file:
+      - .env
+    command: "celery -A app.tasks.celery_worker worker -l info -Q upload-queue --concurrency=${WORKERS_CONCURRENCY_UPLOAD}"
