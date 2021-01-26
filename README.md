@@ -113,7 +113,7 @@ Advanced configuraiton options are availalbe in `constants.py`:
 
 #### Upload batch size: how many files should be uploaded in a single API call 
 
-The Filerobot Uploaders will download files in batches from your origin storage over http or ftp. Reduce FILEROBOT_UPLOAD_BATCH_SIZE if you have bandwith issues at your origin.
+The Filerobot Uploaders will download files in batches from your origin storage over http or ftp. Reduce FILEROBOT_UPLOAD_BATCH_SIZE if you have bandwith issues at your origin that could cause failed file uploads.
 
 FILEROBOT_UPLOAD_BATCH_SIZE = 20
 
