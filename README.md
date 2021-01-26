@@ -53,7 +53,7 @@ Description: start the migration
 Response: {"status":"OK"}
 ```
 
-### Monitoring
+### Monitor the migration process
 You can monitor the progress and results of each migration using the buil-in **pgadmin**.
 Open http://localhost:5050 and enter the credetentials defined for PGADMIN_EMAIL and PGADMIN_PASS in the `.env` file.
 The first time you start pgadmin, you will need to create a connection to the database.
@@ -61,12 +61,15 @@ Please refer to the sample configuration below, espetially the host, which is th
 
 ![PG admin config](/docs/static/pg-admin-config.png)
 
-You can also atach to a specific image with the following command:
+You can also attach to a specific image with the following command:
 ```
 docker logs --follow <container_id>
 ```
 
 ### Check results
+
+An easy way to check the progress and results of your migration is by running following query in pgadmin:
+
 ```sql
 SELECT * FROM urls WHERE result is NOT NULL
 ```
