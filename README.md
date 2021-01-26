@@ -74,9 +74,8 @@ An easy way to check the progress and results of your migration is by running fo
 SELECT * FROM urls WHERE result is NOT NULL
 ```
 
-## Configuration in .env file
-Most of the configurations are placed in the .env file.
-Here is a list:  
+## Configuration options in .env file
+
 #### Prefix of the images in Compose structure
 COMPOSE_PROJECT_NAME=filerobot_uploader
 
