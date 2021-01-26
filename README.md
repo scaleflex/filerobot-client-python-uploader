@@ -127,3 +127,9 @@ FILEROBOT_MAX_RETRIES = 2
 - **app** - the main app and basic endpoints
 - **worker_system** - worker for system tasks, which should be quick and simple
 - **worker_upload** - worker for the heavy task with uploading files
+
+## Roadmap
+- Support Multipart upload from large local files using PUT (streaming)
+- Advanced retry logic for re-uploading single failed files
+- Post-run statistics to help finetuning `WORKERS_CONCURRENCY_UPLOAD`, `FILEROBOT_UPLOAD_BATCH_SIZE` and `FILEROBOT_MAX_RETRIES`
+- Leverage the Filerobot-CLI for atomic operations
