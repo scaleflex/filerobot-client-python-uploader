@@ -54,10 +54,11 @@ Response: {"status":"OK"}
 ```
 
 ### Monitoring
-You can monitor the progress and results, using the buil-in **pgadmin**.
-Open **http://localhost:5050** and enter the credetentials defined for PGADMIN_EMAIL and PGADMIN_PASS in .env file.
-The first time, you need to create a connection to the service, in order to view the table.
-Please refer to this configuration (espetially the host, which is the docker-compose service name):  
+You can monitor the progress and results of each migration using the buil-in **pgadmin**.
+Open http://localhost:5050 and enter the credetentials defined for PGADMIN_EMAIL and PGADMIN_PASS in the `.env` file.
+The first time you start pgadmin, you will need to create a connection to the database.
+Please refer to the sample configuration below, espetially the host, which is the docker-compose service name:
+
 ![PG admin config](/docs/static/pg-admin-config.png)
 
 You can also atach to a specific image with the following command:
