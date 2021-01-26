@@ -15,7 +15,7 @@ Then, browse the repository and create a copy of the sample configuration file i
 cd filerobot-client-python-uploader && cp .env.sample .env
 ```
 
-Read carefully all configuration options in the `.env` file and fill them accordingly (see below description of each option).
+Read carefully all configuration options in the `.env` file and fill them accordingly. [Details at the end of this README](https://github.com/scaleflex/filerobot-client-python-uploader#configuration-options-in-env-file).
 
 After saving the `.env` file start the Docker containers:
 ```bash
