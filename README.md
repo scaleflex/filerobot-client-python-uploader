@@ -28,6 +28,7 @@ bash scripts/deploy-containers-detached.sh
 ```
 
 If the `.env` file is correctly loaded, the following service will be running:  
+
 ![docker compose ps](/docs/static/docker-compose-ps.png)
 
 A set of API endpoints will be available locally on the machine for you to manage your migration. You can obviously call these APIs remotely if your machine is reachable over the network.
