@@ -36,7 +36,7 @@ A set of API endpoints will be available locally on the machine for you to manag
 ### API endpoints to trigger
 Triggering and monitoring your migration involves calling some local APIs. 
 
-Host is **localhost** as you are running the containers locally. You can expose the server running this migration script to the Internet and call the APIs remotely as well.
+Host is `localhost` as you are running the containers locally. You can expose the server running this migration script to the Internet and call the APIs remotely as well.
 
 ```
 http://localhost:8000/
