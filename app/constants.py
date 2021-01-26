@@ -23,9 +23,10 @@ if bool(os.getenv("DOCKER")):
 # Main endpoint to the Filerobot API. Additional method are defined in fuctions
 FILEROBOT_API_ENDPOINT = "https://api.filerobot.com"
 
-# Filerobot default directory, where to store the transcoded files
-# Need to be a top level directory
-FILEROBOT_UPLOAD_DIR = "/test-21-01-2021"
+# Timeout to assing to get/post calls for the different APIs
+APIS_TIMEOUT = 3000
+
+##### Filerobot Configurations ######
 
 # Batches count, how many paths we are trying to send in a single call
 FILEROBOT_UPLOAD_BATCH_SIZE = 20
@@ -34,5 +35,4 @@ FILEROBOT_UPLOAD_BATCH_SIZE = 20
 # How many times we will try to upload list with files, before cancel the function
 FILEROBOT_MAX_RETRIES = 2
 
-# Timeout to assing to get/post calls for the different APIs
-APIS_TIMEOUT = 3000
+

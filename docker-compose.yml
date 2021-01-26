@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3"
 
 services:
   postgres:
@@ -6,8 +6,8 @@ services:
     ports:
       - "5432"
     environment:
-      - POSTGRES_USER=filerobot
-      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASS}
       - POSTGRES_DB=postgres
     volumes:
       - ./app/persist/database:/var/lib/postgresql
@@ -16,8 +16,8 @@ services:
     container_name: pgadmin
     image: dpage/pgadmin4
     environment:
-      - PGADMIN_DEFAULT_EMAIL=simeon@scaleflex.com
-      - PGADMIN_DEFAULT_PASSWORD=123456
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASS}
     ports:
       - "5050:80"
     depends_on:

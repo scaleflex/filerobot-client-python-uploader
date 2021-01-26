@@ -18,21 +18,33 @@ app = FastAPI()
 
 
 def celery_on_message(body):
+    """
+    Logging for messages, coming from Celery
+    """
     log.warning(body)
 
 
 def get_results(limit):
+    """
+    Fetch results from DB
+    """
     with engine.connect() as con:
         rs = con.execute("SELECT url FROM urls WHERE upload_started is NULL ORDER BY id DESC LIMIT {}".format(limit))
         return rs
 
 @app.get("/")
 async def read_root():
+    """
+    Main path of the API. Just for confirmation that all is working.
+    """
     return {"status": "OK"}
 
 
 @app.get("/load-urls")
 async def load_urls():
+    """
+    Load URLS from a file in DATA_DIR, define the name of the file
+    """
     with open(os.path.join(DATA_DIR, "small.txt")) as f:
         lines = f.readlines()
 
@@ -45,7 +57,11 @@ async def load_urls():
 
 @app.get("/run")
 async def run():
+    """
+    Run the actual uploading in batches
+    """
     while True:
+        # Define how many results to try to upload in 1 minute
         results = get_results(300)
         urls_for_parse = []
         for result in results:
@@ -61,6 +77,9 @@ async def run():
 
 @app.get("/create-db")
 async def create_db():
+    """
+    Create the DB initially, in the begining of script execution
+    """
     metadata = MetaData()
     urls = Table('urls', metadata,
                  Column('id', Integer, primary_key=True, autoincrement=True),

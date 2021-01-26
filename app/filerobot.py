@@ -1,8 +1,9 @@
+import os
 import json
 
 import requests
 
-from app.constants import FILEROBOT_API_ENDPOINT, FILEROBOT_UPLOAD_DIR, APIS_TIMEOUT
+from app.constants import FILEROBOT_API_ENDPOINT, APIS_TIMEOUT
 
 
 class Filerobot:
@@ -11,7 +12,8 @@ class Filerobot:
         self.filerobot_key = filerobot_key
 
     def upload_endpoint(self, folder=None):
-        endpoint = f"{FILEROBOT_API_ENDPOINT}/{self.filerobot_token}/v4/upload?dir={FILEROBOT_UPLOAD_DIR}"
+        filerobot_upload_dir = os.environ.get("FILEROBOT_DIR")
+        endpoint = f"{FILEROBOT_API_ENDPOINT}/{self.filerobot_token}/v4/upload?dir={filerobot_upload_dir}"
         if folder is not None:
             if not folder.startswith("/"):
                 folder = f"/{folder}"

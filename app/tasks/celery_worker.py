@@ -11,9 +11,11 @@ log = logging.getLogger(__name__)
 
 @celery_app.task()
 def insert_url(url):
-    with engine.connect() as con:
-        rs = con.execute("INSERT INTO urls(url) VALUES('{}')".format(url))
-        return rs
+    try:
+        with engine.connect() as con:
+            rs = con.execute("INSERT INTO urls(url) VALUES('{}')".format(url))
+    except:
+        log.warning(f"ERROR insert_url for {url}")
 
 
 @celery_app.task()
