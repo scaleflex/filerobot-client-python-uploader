@@ -34,8 +34,10 @@ If the `.env` file is correctly loaded, the following service will be running:
 A set of API endpoints will be available locally on the machine for you to manage your migration. You can obviously call these APIs remotely if your machine is reachable over the network.
 
 ### API endpoints to trigger
-It is basically a simple API with some operations, which help to upload files. There are endpoints, which triggers different operation.
-Host is **localhost** as you are running the containers locally.
+Triggering and monitoring your migration involves calling some local APIs. 
+
+Host is **localhost** as you are running the containers locally. You can expose the server running this migration script to the Internet and call the APIs remotely as well.
+
 ```
 http://localhost:8000/
 Description: confirm that the container is up and rnuning
