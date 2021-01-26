@@ -108,7 +108,7 @@ FILEROBOT_DIR = "/test"
 
 Advanced configuraiton options are availalbe in `constants.py`:
 
-### Batches count: how many files should be uploaded in a single API call
+#### Batches count: how many files should be uploaded in a single API call
 FILEROBOT_UPLOAD_BATCH_SIZE = 20
 
 #### Max retries of Filerobot operations
@@ -121,5 +121,3 @@ FILEROBOT_MAX_RETRIES = 2
 - **app** - the main app and basic endpoints.
 - **worker_system** - worker for system tasks, which should be quick and simple.
 - **worker_upload** - worker for the heavy task with uploading files.
-
-
