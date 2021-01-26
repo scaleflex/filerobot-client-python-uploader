@@ -5,17 +5,17 @@ A simple Python migration script in Python for uploading large amount of files f
 The script is running in Python 3.7 and is wrapped in Docker Compose for easy start and configuration.
 
 ## Running the script
-First clone the repository localy on the machine you want to run the migration script:
+First, clone the repository localy on the machine you want to run the migration script:
 ```bash
 git clone https://github.com/scaleflex/filerobot-client-python-uploader.git
 ```
 
-Enter the repository and add copy the sample configuration file into `.env`. You can reuse the `.env.sample` as a base for additional migrations.
+Then, browse the repository and create a copy of the sample configuration file into `.env`. You can reuse the `.env.sample` as a base for additional migrations.
 ```bash
 cd filerobot-client-python-uploader && cp .env.sample .env
 ```
 
-Read carefully all configuration options in the `.env` file and fill them accordingly.
+Read carefully all configuration options in the `.env` file and fill them accordingly (see below description of each option).
 
 After saving the `.env` file start the Docker containers:
 ```bash
