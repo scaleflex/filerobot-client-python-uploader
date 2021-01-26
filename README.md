@@ -109,16 +109,18 @@ FILEROBOT_DIR = "/test"
 
 Advanced configuraiton options are availalbe in `constants.py`:
 
-#### Batches count: how many files should be uploaded in a single API call
+#### Upload batch size: how many files should be uploaded in a single API call 
+
+The Filerobot Uplaoders will download files in batches from your origin. Reduce FILEROBOT_UPLOAD_BATCH_SIZE if you have bandwith issues at your origin.
 FILEROBOT_UPLOAD_BATCH_SIZE = 20
 
 #### Max retries of Filerobot operations
 FILEROBOT_MAX_RETRIES = 2
 
 ## Services
-- **postgres** - DB to store information about files.
-- **pgadmin** - service for inspecting the DB.
-- **redis** - communication between app and workers.
-- **app** - the main app and basic endpoints.
-- **worker_system** - worker for system tasks, which should be quick and simple.
-- **worker_upload** - worker for the heavy task with uploading files.
+- **postgres** - DB to store uploaded file information
+- **pgadmin** - service for querying the DB
+- **redis** - communication between app and workers
+- **app** - the main app and basic endpoints
+- **worker_system** - worker for system tasks, which should be quick and simple
+- **worker_upload** - worker for the heavy task with uploading files
