@@ -1,6 +1,6 @@
 ## Filerobot Client Python Uploader
 
-A simple Python migration script in Python for uploading large amount of files into Filerobot.
+A simple Python migration script in Python for uploading large amount of files from an existing http-based storage into Filerobot.
 
 The script is running in Python 3.7 and is wrapped in Docker Compose for easy start and configuration.
 
@@ -10,7 +10,7 @@ First clone the repository localy on the machine you want to run the migration s
 git clone https://github.com/scaleflex/filerobot-client-python-uploader.git
 ```
 
-Enter the repository and add copy the sample configuration file into `.env`
+Enter the repository and add copy the sample configuration file into `.env`. You can reuse the `.env.sample` as a base for additional migrations.
 ```bash
 cd filerobot-client-python-uploader && cp .env.sample .env
 ```
@@ -32,7 +32,7 @@ If the `.env` file is correctly loaded, the following service will be running:
 
 A set of API endpoints will be available locally on the machine for you to manage your migration. You can obviously call these APIs remotely if your machine is reachable over the network.
 
-### Endpoints to trigger
+### API endpoints to trigger
 It is basically a simple API with some operations, which help to upload files. There are endpoints, which triggers different operation.
 Host is **localhost** as you are running the containers locally.
 ```
@@ -82,36 +82,36 @@ COMPOSE_PROJECT_NAME=filerobot_uploader
 #### How many concurent upload to trigger (1 to 20, depends on file size and origin speed)
 WORKERS_CONCURRENCY_UPLOAD=7
 
-#### Local DB user, generally - leave like this
+#### Local DB user - you can leave default value
 POSTGRES_USER=filerobot
 
-#### DB name, generally - leave like this
+#### DB name - you can leave default value
 POSTGRES_DB=filerobot
 
-#### Locan DB pass, generally - leave like this
+#### Locan DB pass - you can leave default value
 POSTGRES_PASS=123456
 
-#### Admin email for PGAdmin service, adapt to your needs, no verification sended
+#### Admin email for PGAdmin service - adapt to your needs, no verification sent
 PGADMIN_EMAIL=someone@scaleflex.com
 
-#### Password for PGAdmin service, adapt to your needs
+#### Password for PGAdmin service - adapt to your needs
 PGADMIN_PASS=123456
 
-#### Your filerobot token
+#### Your Filerobot token
 FILEROBOT_TOKEN = ""
 
-#### Your filerobot key with upload permisssions
+#### Your Filerobot API key (upload permisssion required)
 FILEROBOT_KEY = ""
 
-#### Your filerobot upload dir
+#### Target Filerobot upload folder
 FILEROBOT_DIR = "/test"
 
-There are some additionals configs, which can be controlled in constants.py. They should be changed more rarely.
-A list can be find below:  
-### Batches count, how many paths we are trying to send in a single call
+Advanced configuraiton options are availalbe in `constants.py`:
+
+### Batches count: how many files should be uploaded in a single API call
 FILEROBOT_UPLOAD_BATCH_SIZE = 20
 
-#### Max retries of Filerobot operations, like upload.
+#### Max retries of Filerobot operations
 FILEROBOT_MAX_RETRIES = 2
 
 ## Services
