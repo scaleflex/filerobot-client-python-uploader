@@ -112,6 +112,7 @@ Advanced configuraiton options are availalbe in `constants.py`:
 #### Upload batch size: how many files should be uploaded in a single API call 
 
 The Filerobot Uplaoders will download files in batches from your origin. Reduce FILEROBOT_UPLOAD_BATCH_SIZE if you have bandwith issues at your origin.
+
 FILEROBOT_UPLOAD_BATCH_SIZE = 20
 
 #### Max retries of Filerobot operations
