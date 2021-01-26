@@ -1,58 +1,60 @@
 ## Filerobot Client Python Uploader
 
-A simple Python migration script for uploading large amount of files into Filerobot
+A simple Python migration script in Python for uploading large amount of files into Filerobot.
 
-The script is running in Python 3.7 and it is wrapped in Docker Compose for easy start and configuration.
+The script is running in Python 3.7 and is wrapped in Docker Compose for easy start and configuration.
 
 ## Running the script
-First you need to clone the repository localy:
+First clone the repository localy on the machine you want to run the migration script:
 ```bash
 git clone https://github.com/scaleflex/filerobot-client-python-uploader.git
 ```
 
-Enter the repository and add copy the sample configuration file (as the script need .env file to work)
+Enter the repository and add copy the sample configuration file into `.env`
 ```bash
 cd filerobot-client-python-uploader && cp .env.sample .env
 ```
 
-Read carefully all the configuration in the .env file and fill them accordingly. There are commments to each one, describing the exact behaviour.
+Read carefully all configuration options in the `.env` file and fill them accordingly.
 
-When ready, you need to start the containers:
+After saving the `.env` file start the Docker containers:
 ```bash
 bash scripts/deploy-containers.sh
 ```
 
-If you want to be in detached mode (you will not see live logs):
+Tu run the containers in detached mode (you will not see live logs):
 ```bash
 bash scripts/deploy-containers-detached.sh
 ```
 
-If everything is correct, you need to see the following service running:  
+If the `.env` file is correctly loaded, the following service will be running:  
 ![docker compose ps](/docs/static/docker-compose-ps.png)
+
+A set of API endpoints will be available locally on the machine for you to manage your migration. You can obviously call these APIs remotely if your machine is reachable over the network.
 
 ### Endpoints to trigger
 It is basically a simple API with some operations, which help to upload files. There are endpoints, which triggers different operation.
 Host is **localhost** as you are running the containers locally.
 ```
 http://localhost:8000/
-Description: Just to confirm container is UP
+Description: confirm that the container is up and rnuning
 Response: {"status":"OK"}
 
 http://localhost:8000/create-db
-Description: Trigger this endpoint the first time, creating the DB to store the results
+Description: endpoint to initiate local DB for storing the migration results (required before you run any migrations)
 Response: {"status":"OK"}
 
 http://localhost:8000/load-urls
-Description: Load a file and put the results into the DB, currently it should be a .TXT file with URLS in a single line. Check the function load_urls in main.py.
+Description: load a file and put the results into the DB, currently it should be a .TXT file with one URL to a file to upload into Filerobot per line. More infro about the function load_urls in main.py
 Response: {"status":"OK"}
 
 http://localhost:8000/run
-Description: Actual running of upload operations, monitor the DB
+Description: start the migration
 Response: {"status":"OK"}
 ```
 
 ### Monitoring
-You can monitor the progress and results, using the buil-in service **pgadmin**.
+You can monitor the progress and results, using the buil-in **pgadmin**.
 Open **http://localhost:5050** and enter the credetentials defined for PGADMIN_EMAIL and PGADMIN_PASS in .env file.
 The first time, you need to create a connection to the service, in order to view the table.
 Please refer to this configuration (espetially the host, which is the docker-compose service name):  
