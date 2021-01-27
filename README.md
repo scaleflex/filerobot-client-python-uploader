@@ -4,6 +4,9 @@ A simple Python migration script for uploading/migrating large amount of files f
 
 The script is running in Python 3.7 and is wrapped in Docker Compose for easy start and configuration.
 
+How to install Docker Compose: https://docs.docker.com/compose/install/  
+
+
 ## Running the script
 First, clone the repository localy on the machine you want to run the migration script:
 ```bash
@@ -49,6 +52,7 @@ Response: {"status":"OK"}
 
 http://localhost:8000/load-urls
 Description: load a file and put the results into the DB, currently it should be a .TXT file with one URL to a file to upload into Filerobot per line. More infro about the function load_urls in main.py
+Requirements for the .TXT files: one input per line, accept URLS (HTTP or FTP links)
 Response: {"status":"OK"}
 
 http://localhost:8000/run
@@ -85,7 +89,7 @@ Any record having `upload_started = true` and `result = NULL` represents a file 
 
 ## Configuration options in .env file
 
-#### Prefix of the images in Compose structure
+#### Prefix of the Docker Images in Compose structure of project (Docker related)
 COMPOSE_PROJECT_NAME=filerobot_uploader
 
 #### How many concurent upload to trigger (1 to 20, depends on file size and origin speed)
