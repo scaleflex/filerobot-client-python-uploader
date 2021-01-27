@@ -113,7 +113,7 @@ FILEROBOT_TOKEN = ""
 FILEROBOT_KEY = ""
 
 #### Target Filerobot upload folder
-FILEROBOT_DIR = "/test"
+FILEROBOT_FOLDER = "/test"
 
 Advanced configuraiton options are availalbe in `constants.py`:
 

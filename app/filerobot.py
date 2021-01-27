@@ -12,7 +12,7 @@ class Filerobot:
         self.filerobot_key = filerobot_key
 
     def upload_endpoint(self, folder=None):
-        filerobot_upload_dir = os.environ.get("FILEROBOT_DIR")
+        filerobot_upload_dir = os.environ.get("FILEROBOT_FOLDER")
         endpoint = f"{FILEROBOT_API_ENDPOINT}/{self.filerobot_token}/v4/upload?dir={filerobot_upload_dir}"
         if folder is not None:
             if not folder.startswith("/"):
