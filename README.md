@@ -1,6 +1,6 @@
 ## Filerobot Client Python Uploader
 
-A simple Python migration script for uploading/migrating large amount of files from an existing http or ftp storage into Filerobot. This script leverages the Filerobot [POST Upload API](https://docs.filerobot.com/go/filerobot-documentation/en/store-manage/store-apis/file-apis/upload-files) with remotely hosted files documented here.
+A simple Python migration script for uploading/migrating large amount of files from an existing http or ftp storage into Filerobot. This script leverages the Filerobot [POST Upload API](https://docs.filerobot.com/go/filerobot-documentation/en/store-manage/store-apis/file-apis/upload-files) with remotely hosted files fed into the script via a TXT file.
 
 The script is running in Python 3.7 and is wrapped in Docker Compose for easy start and configuration.
 
@@ -129,6 +129,7 @@ FILEROBOT_MAX_RETRIES = 2
 - **worker_upload** - worker for the heavy task with uploading files
 
 ## Roadmap
+- Support CSV as list of files to be uploaded with per-file target folder and metadata
 - Support Multipart upload from large local files using PUT (streaming)
 - Advanced retry logic for re-uploading single failed file uploads (download from origin has failed with status code different from 404)
 - Post-run statistics to help finetuning `WORKERS_CONCURRENCY_UPLOAD`, `FILEROBOT_UPLOAD_BATCH_SIZE` and `FILEROBOT_MAX_RETRIES`
