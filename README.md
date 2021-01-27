@@ -77,6 +77,12 @@ An easy way to check the progress and results of your migration is by running fo
 SELECT * FROM urls WHERE result is NOT NULL
 ```
 
+Any record having `upload_started = true` and `result = NULL` represents a file that is either currently being uploaded or where the upload has failed. Reasons for failed uploads are:
+
+- missing file at your origin (404)
+- failed download from your origin because of slow network (timeout)
+
+
 ## Configuration options in .env file
 
 #### Prefix of the images in Compose structure
