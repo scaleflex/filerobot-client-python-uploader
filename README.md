@@ -1,11 +1,14 @@
 ## Filerobot Client Python Uploader
 
-A simple Python migration script for uploading/migrating large amount of files from an existing http or ftp storage into Filerobot. This script leverages the Filerobot [POST Upload API](https://docs.filerobot.com/go/filerobot-documentation/en/store-manage/store-apis/file-apis/upload-files) with remotely hosted files fed into the script via a TXT file.
-
-The script is running in Python 3.7 and is wrapped in Docker Compose for easy start and configuration.
+A simple Python migration script for uploading/migrating large amount of files from an existing http or ftp storage into Filerobot. This script leverages the Filerobot [POST Upload API](https://docs.filerobot.com/go/filerobot-documentation/en/store-manage/store-apis/file-apis/upload-files) with remotely hosted files fed into the script via a .txt file.
 
 How to install Docker Compose: https://docs.docker.com/compose/install/  
 
+### Requirements
+
+- Python 3.7
+- Docker Compose ([installation guide](https://docs.docker.com/compose/install/))
+- A .txt file containing file URLs to be uploaded in to Filerobot, 1 per line
 
 ## Running the script
 First, clone the repository localy on the machine you want to run the migration script:
@@ -51,8 +54,8 @@ Description: endpoint to initiate local DB for storing the migration results (re
 Response: {"status":"OK"}
 
 http://localhost:8000/load-urls
-Description: load a file and put the results into the DB, currently it should be a .TXT file with one URL to a file to upload into Filerobot per line. More infro about the function load_urls in main.py
-Requirements for the .TXT files: one input per line, accept URLS (HTTP or FTP links)
+Description: load a file and put the results into the DB, currently it should be a .txt file with one URL to a file to upload into Filerobot per line. More infro about the function load_urls in main.py
+Requirements for the .txt files: one input per line, accept URLS (HTTP or FTP links)
 Response: {"status":"OK"}
 
 http://localhost:8000/run
