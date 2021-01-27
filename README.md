@@ -130,6 +130,6 @@ FILEROBOT_MAX_RETRIES = 2
 
 ## Roadmap
 - Support Multipart upload from large local files using PUT (streaming)
-- Advanced retry logic for re-uploading single failed file uploads
+- Advanced retry logic for re-uploading single failed file uploads (download from origin has failed with status code different from 404)
 - Post-run statistics to help finetuning `WORKERS_CONCURRENCY_UPLOAD`, `FILEROBOT_UPLOAD_BATCH_SIZE` and `FILEROBOT_MAX_RETRIES`
 - Leverage the Filerobot-CLI for atomic operations
