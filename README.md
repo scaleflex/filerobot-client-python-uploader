@@ -74,7 +74,7 @@ You can also attach to a specific image with the following command:
 docker logs --follow <container_id>
 ```
 
-### Check results
+### Monitoring and verification
 
 An easy way to check the progress and results of your migration is by running following query in pgadmin:
 
@@ -90,25 +90,25 @@ Any record having `upload_started = true` and `result = NULL` represents a file 
 
 ## Configuration options in .env file
 
-#### Prefix of the Docker Images in Compose structure of project (Docker related)
+#### Prefix of the Docker Images in Compose structure of project (Docker related) - leave default value
 COMPOSE_PROJECT_NAME=filerobot_uploader
 
-#### How many concurent upload to trigger (1 to 20, depends on file size and origin speed)
+#### How many concurent upload batches to trigger (1-20, depends on file size and origin bandwith)
 WORKERS_CONCURRENCY_UPLOAD=7
 
-#### Local DB user - you can leave default value
+#### Local DB user - leave default value
 POSTGRES_USER=filerobot
 
-#### DB name - you can leave default value
+#### DB name - leave default value
 POSTGRES_DB=filerobot
 
-#### Locan DB pass - you can leave default value
+#### Locan DB pass - leave default value
 POSTGRES_PASS=123456
 
 #### Admin email for PGAdmin service - adapt to your needs, no verification sent
 PGADMIN_EMAIL=someone@scaleflex.com
 
-#### Password for PGAdmin service - adapt to your needs
+#### Password for PGAdmin - adapt to your needs
 PGADMIN_PASS=123456
 
 #### Your Filerobot token
