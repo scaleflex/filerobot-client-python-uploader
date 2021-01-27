@@ -124,15 +124,17 @@ Advanced configuraiton options are availalbe in `constants.py`:
 
 #### Upload batch size: how many files should be uploaded in a single API call 
 
-The Filerobot Uploaders will download files in batches from your origin storage over http or ftp. Reduce FILEROBOT_UPLOAD_BATCH_SIZE if you have bandwith issues at your origin that could cause failed file uploads (maximum = 100, recommended 20).
+The Filerobot Uploaders will download files in batches from your origin storage over http or ftp. Reduce FILEROBOT_UPLOAD_BATCH_SIZE if you have bandwith issues at your origin that could cause failed file uploads (maximum = 100, recommended 20):
 
 FILEROBOT_UPLOAD_BATCH_SIZE = 20
 
 #### Max retries of Filerobot operations
 
-If the upload of a file batch fails for any reason other than non-existing files at the origin (404), the script can retry the upload of the entire batch a configurable amount of times.
+If the upload of a batch of files (see above) fails for any reason other than non-existing files at the origin (HTTP 404 error from your origin), the script can retry the upload of the entire batch a specified amount of times:
 
 FILEROBOT_MAX_RETRIES = 2
+
+The current version of the script does not support the retry of individual failes files as this is something handled by the Filerobot Uploader backend. For the time being, you can use the local database to identify issues with individual files and retry uplaoding them with a new `.txt` file.
 
 ## Services
 - **postgres** - DB to store uploaded file information
