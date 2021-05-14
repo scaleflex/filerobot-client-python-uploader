@@ -1,7 +1,7 @@
-fastapi==0.63.0  # https://fastapi.tiangolo.com/
-uvicorn==0.13.3  # https://www.uvicorn.org/
+fastapi==0.65.1  # https://fastapi.tiangolo.com/
+uvicorn==0.13.4  # https://www.uvicorn.org/
 requests==2.25.1  # https://requests.readthedocs.io/en/master/
-pydantic==1.7.3 # https://pydantic-docs.helpmanual.io/
+pydantic==1.8.2 # https://pydantic-docs.helpmanual.io/
 celery==5.0.5  # https://docs.celeryproject.org/en/stable/index.html
 redis==3.5.3  # https://github.com/andymccurdy/redis-py
 FastAPI-SQLAlchemy==0.2.1  # https://github.com/mfreeborn/fastapi-sqlalchemy

@@ -4,6 +4,7 @@ FROM python:3.7-alpine
 ENV DOCKER=true
 
 # Install Docker dependencies for PostgreSQL
+RUN apk add build-base
 RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 
 # Expose a port
